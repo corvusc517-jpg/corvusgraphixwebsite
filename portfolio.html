@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Corvus Graphix</title>
+    <style>
+        /* CSS Variables for Color Scheme */
+        :root {
+            --offwhite: #f8f8f8;
+            --charcoal: #333333;
+            --forest-green: #2d5a27;
+            --light-green: #4a7c59;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--offwhite);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--forest-green);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--light-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--charcoal);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--offwhite);
+        }
+        
+        .logo span {
+            color: var(--forest-green);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--offwhite);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--forest-green);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--offwhite);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--light-green);
+            color: var(--offwhite);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+        
+        /* Portfolio Layout */
+        .portfolio-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            border-bottom: 2px solid var(--forest-green);
+            padding-bottom: 0.5rem;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--charcoal);
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+        }
+        
+        /* Portfolio Content */
+        .portfolio-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+            border-bottom: 2px solid var(--forest-green);
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Portfolio Filters */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--forest-green);
+            color: var(--forest-green);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: white;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(45, 90, 39, 0.9);
+            color: var(--offwhite);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+        
+        .portfolio-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background-color: var(--offwhite);
+            color: var(--forest-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            border: 1px solid var(--forest-green);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta .btn {
+            background-color: var(--offwhite);
+            color: var(--forest-green);
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--offwhite);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--forest-green);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--forest-green);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .portfolio-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 3rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .portfolio-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Corvus<span>Graphix</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#contact" class="btn">Get in Touch</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <p>A collection of my recent design work across various styles and industries.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Layout -->
+    <section class="portfolio-layout container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h3>Navigation</h3>
+            <ul class="sidebar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#contact">Get in Touch</a></li>
+            </ul>
+        </aside>
+
+        <!-- Portfolio Content -->
+        <main class="portfolio-content">
+            <h2>Recent Work</h2>
+            
+            <!-- Portfolio Filters -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="logo">Logo Design</button>
+                <button class="filter-btn" data-filter="branding">Brand Identity</button>
+                <button class="filter-btn" data-filter="print">Print Design</button>
+                <button class="filter-btn" data-filter="digital">Digital Graphics</button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="branding">
+                    <img src="HERE" alt="Brand Identity Project">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Identity</h3>
+                        <p>The kind of thinking that goes into creating an identity</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Brand Identity Project</h3>
+                        <p>Complete brand identity development for a modern company</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Logo</span>
+                            <span class="tag">Style Guide</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item" data-category="digital">
+                    <img src="HERE" alt="Isometric Game Graphics">
+                    <div class="portfolio-overlay">
+                        <h3>Isometric 2D Game Graphics</h3>
+                        <p>A visualised game map created using illustrator tools</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Isometric Game Map</h3>
+                        <p>Detailed isometric design for a 2D game environment</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Digital Art</span>
+                            <span class="tag">Game Design</span>
+                            <span class="tag">Illustration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item" data-category="digital">
+                    <img src="HERE" alt="Finance Tracker UI">
+                    <div class="portfolio-overlay">
+                        <h3>Finance Tracker UI</h3>
+                        <p>Complete software and user interface design</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Finance Tracker Application</h3>
+                        <p>User interface design for a mobile banking application (in progress)</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">App Design</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item" data-category="logo">
+                    <img src="HERE" alt="Minimal Logo Design">
+                    <div class="portfolio-overlay">
+                        <h3>Minimal Logo Series</h3>
+                        <p>Clean and simple logo designs for modern brands</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Minimal Logo Collection</h3>
+                        <p>Series of minimalist logo designs for various clients</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Logo</span>
+                            <span class="tag">Minimal</span>
+                            <span class="tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item" data-category="print">
+                    <img src="HERE" alt="Business Card Design">
+                    <div class="portfolio-overlay">
+                        <h3>Business Card Design</h3>
+                        <p>Professional business card for corporate client</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Corporate Business Cards</h3>
+                        <p>Elegant business card design with modern typography</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Print</span>
+                            <span class="tag">Business Cards</span>
+                            <span class="tag">Typography</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="digital">
+                    <img src="HERE" alt="Infographic Design">
+                    <div class="portfolio-overlay">
+                        <h3>Infographic Series</h3>
+                        <p>Data visualization for complex information</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Information Graphics</h3>
+                        <p>Series of infographics making complex data easily understandable</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Infographic</span>
+                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 7 -->
+                <div class="portfolio-item" data-category="branding">
+                    <img src="HERE" alt="Brand Style Guide">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Style Guide</h3>
+                        <p>Comprehensive brand guidelines</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Complete Brand Guidelines</h3>
+                        <p>Detailed style guide covering logo usage, colors, and typography</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Style Guide</span>
+                            <span class="tag">Design System</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 8 -->
+                <div class="portfolio-item" data-category="print">
+                    <img src="HERE" alt="Magazine Layout">
+                    <div class="portfolio-overlay">
+                        <h3>Magazine Layout</h3>
+                        <p>Editorial design for publication</p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Magazine Spread Design</h3>
+                        <p>Layout and typography for a feature magazine article</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Print</span>
+                            <span class="tag">Editorial</span>
+                            <span class="tag">Layout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Like What You See?</h2>
+            <p>Let's work together to create something amazing for your brand or project.</p>
+            <a href="#contact" class="btn">Start a Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CorvusGraphix</h3>
+                    <p>Professional graphic design services to help your business and projects make a lasting impression.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">LI</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="services.html">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email: corvus@corvusgraphix.com</p>
+                    <p>Phone: +44 7342 845109</p>
+                    <p>Based in London, UK</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Corvus Graphix</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Portfolio Filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // Portfolio filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            if (filterButtons.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                        
+                        const filterValue = this.getAttribute('data-filter');
+                        
+                        // Show/hide portfolio items based on filter
+                        portfolioItems.forEach(item => {
+                            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
