@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Corvus Graphix</title>
+    <style>
+        /* CSS Variables for Color Scheme */
+        :root {
+            --offwhite: #f8f8f8;
+            --charcoal: #333333;
+            --forest-green: #2d5a27;
+            --light-green: #4a7c59;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--offwhite);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--forest-green);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--light-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--charcoal);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--offwhite);
+        }
+        
+        .logo span {
+            color: var(--forest-green);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--offwhite);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--forest-green);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--offwhite);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--light-green);
+            color: var(--offwhite);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+        
+        /* Services Layout */
+        .services-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            border-bottom: 2px solid var(--forest-green);
+            padding-bottom: 0.5rem;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--charcoal);
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+        }
+        
+        /* Services Content */
+        .services-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+            border-bottom: 2px solid var(--forest-green);
+            padding-bottom: 0.5rem;
+        }
+        
+        .service-category {
+            margin-bottom: 4rem;
+        }
+        
+        .service-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--forest-green);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--forest-green);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .service-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--forest-green);
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background-color: var(--forest-green);
+            color: var(--offwhite);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta .btn {
+            background-color: var(--offwhite);
+            color: var(--forest-green);
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--offwhite);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--offwhite);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--forest-green);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--forest-green);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .services-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 3rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .services-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Corvus<span>Graphix</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="#contact" class="btn">Get in Touch</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Design Services</h1>
+            <p>Professional graphic design solutions tailored to your needs. From logos to complete brand identities.</p>
+        </div>
+    </section>
+
+    <!-- Services Layout -->
+    <section class="services-layout container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h3>Navigation</h3>
+            <ul class="sidebar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="#contact">Get in Touch</a></li>
+            </ul>
+        </aside>
+
+        <!-- Services Content -->
+        <main class="services-content">
+            <h2>My Design Services</h2>
+            
+            <!-- Logo Design Services -->
+            <div class="service-category">
+                <h3>Logo Design</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Minimal Logo Designs (x5)</h4>
+                        <p>Five clean, simple logo concepts perfect for modern brands looking for a minimalist aesthetic.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>5 unique logo concepts</li>
+                            <li>Minimalist design approach</li>
+                            <li>3 rounds of revisions</li>
+                            <li>Final files in multiple formats</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h4>Standard Logo Design</h4>
+                        <p>A balanced logo design with moderate detail, suitable for most business needs.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>3 unique logo concepts</li>
+                            <li>Balanced design approach</li>
+                            <li>4 rounds of revisions</li>
+                            <li>Color and B&W versions</li>
+                            <li>Final files in multiple formats</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h4>Highly Detailed Logo Design</h4>
+                        <p>Complex, intricate logo design for brands wanting a premium, detailed visual identity.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>2 detailed logo concepts</li>
+                            <li>Complex design elements</li>
+                            <li>5 rounds of revisions</li>
+                            <li>Multiple color variations</li>
+                            <li>Brand usage guidelines</li>
+                            <li>Final files in all formats</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Brand Identity Services -->
+            <div class="service-category">
+                <h3>Brand Identity</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Brand Identity Kit</h4>
+                        <p>Complete brand identity package including logo, colors, typography, and style guide.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>Primary logo design</li>
+                            <li>Secondary logo variations</li>
+                            <li>Color palette selection</li>
+                            <li>Typography system</li>
+                            <li>Brand style guide</li>
+                            <li>Social media kit</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h4>Business Card Design</h4>
+                        <p>Professional business card design that reflects your brand identity.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>Front and back design</li>
+                            <li>Print-ready files</li>
+                            <li>3 design concepts</li>
+                            <li>2 rounds of revisions</li>
+                            <li>Bleed and trim marks</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marketing & Publication Services -->
+            <div class="service-category">
+                <h3>Marketing & Publications</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Advertisement Kit</h4>
+                        <p>Complete set of advertisement designs for various platforms and media.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>Social media ads (3 sizes)</li>
+                            <li>Web banner ads (5 sizes)</li>
+                            <li>Print advertisement</li>
+                            <li>Email marketing template</li>
+                            <li>All source files</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h4>Infographic Kit</h4>
+                        <p>Series of infographics to present your data and information visually.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>5 custom infographics</li>
+                            <li>Data visualization</li>
+                            <li>Custom icons and illustrations</li>
+                            <li>Print and digital formats</li>
+                            <li>Source files included</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h4>Magazine Editing</h4>
+                        <p>Professional layout design and editing for magazines and publications.</p>
+                        <div class="service-price">£#</div>
+                        <ul class="service-features">
+                            <li>Layout design for 10 pages</li>
+                            <li>Typography selection</li>
+                            <li>Image placement and editing</li>
+                            <li>Print-ready PDF files</li>
+                            <li>3 rounds of revisions</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's discuss your design needs and create something amazing together.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CorvusGraphix</h3>
+                    <p>Professional graphic design services to help your business and projects make a lasting impression.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">LI</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="services.html">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email: corvus@corvusgraphix.com</p>
+                    <p>Phone: +44 7342 845109</p>
+                    <p>Based in London, UK</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Corvus Graphix</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
