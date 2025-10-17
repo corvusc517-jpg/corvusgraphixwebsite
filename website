@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" style="scroll-behavior: auto;">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        /* Keep only essential layout and component styles */
+        .container {width: 100%}
+        @media (min-width: 640px) {.container {max-width: 640px}}
+        @media (min-width: 768px) {.container {max-width: 768px}}
+        @media (min-width: 1024px) {.container {max-width: 1024px}}
+        @media (min-width: 1280px) {.container {max-width: 1280px}}
+        @media (min-width: 1536px) {.container {max-width: 1536px}}
+
+        /* Layout utilities */
+        .flex {display: flex}
+        .flex-col {flex-direction: column}
+        .flex-row {flex-direction: row}
+        .items-center {align-items: center}
+        .justify-center {justify-content: center}
+        .justify-between {justify-content: space-between}
+        .w-full {width: 100%}
+        .h-full {height: 100%}
+        .gap-6 {gap: 1.5rem}
+        .gap-10 {gap: 2.5rem}
+        
+        /* Text styles */
+        .text-white {color: rgb(255 255 255)}
+        .text-white\/50 {color: rgb(255 255 255 / 0.5)}
+        .text-sm {font-size: 0.875rem; line-height: 1.25rem}
+        .text-\[0\.8125rem\]\/\[150\%\] {font-size: 0.8125rem; line-height: 150%}
+        .text-base {font-size: 1rem; line-height: 1.5rem}
+        .font-normal {font-weight: 400}
+        .font-semibold {font-weight: 600}
+        .uppercase {text-transform: uppercase}
+        .text-right {text-align: right}
+        
+        /* Spacing */
+        .px-6 {padding-left: 1.5rem; padding-right: 1.5rem}
+        .py-10 {padding-top: 2.5rem; padding-bottom: 2.5rem}
+        
+        /* Footer specific styles */
+        .border-white\/15 {border-color: rgb(255 255 255 / 0.15)}
+        .solid {border-style: solid; border-top-width: 1px}
+        .rounded-full {border-radius: 9999px}
+        .size-12 {width: 3rem; height: 3rem}
+        .overflow-hidden {overflow: hidden}
+        .whitespace-nowrap {white-space: nowrap}
+        .text-ellipsis {text-overflow: ellipsis}
+        .cursor-default {cursor: default}
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\:flex-row {flex-direction: row}
+            .md\:items-center {align-items: center}
+            .md\:px-12 {padding-left: 3rem; padding-right: 3rem}
+            .md\:max-w-none {max-width: none}
+            .md\:w-fit {width: -moz-fit-content; width: fit-content}
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\:px-20 {padding-left: 5rem; padding-right: 5rem}
+        }
+    </style>
+</head>
+
+<body style="right: unset;">
+    <div data-slot-type="FooterDivider" class="w-full border-white/15 solid"></div>
+    <div class="flex justify-between items-center md:flex-row flex-col lg:px-20 md:px-12 px-6 w-full">
+        <div class="self-start">
+            <div class="w-full flex flex-wrap gap-6 md:gap-x-24" data-slot-type="FooterList">
+                <!-- Footer list items -->
+                <div class="w-full flex flex-col gap-3 max-w-[6.125rem] md:max-w-none md:w-fit">
+                    <div class="text-surface-500 text-[0.8125rem]/[150%] font-normal not-italic uppercase overflow-hidden whitespace-nowrap text-ellipsis">SERVICES</div>
+                    <div class="w-full flex flex-col gap-1.5">
+                        <div class="text-white text-sm/[150%] cursor-default overflow-hidden whitespace-nowrap text-ellipsis">BRANDING</div>
+                        <div class="text-white text-sm/[150%] cursor-default overflow-hidden whitespace-nowrap text-ellipsis">WEB DESIGN</div>
+                        <div class="text-white text-sm/[150%] cursor-default overflow-hidden whitespace-nowrap text-ellipsis">ILLUSTRATION</div>
+                        <div class="text-white text-sm/[150%] cursor-default overflow-hidden whitespace-nowrap text-ellipsis">PRINT DESIGN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
