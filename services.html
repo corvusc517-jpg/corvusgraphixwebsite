@@ -11,6 +11,8 @@
             --charcoal: #333333;
             --forest-green: #2d5a27;
             --light-green: #4a7c59;
+            --soft-red: #f8d7da; /* Added soft red color */
+            --soft-red-text: #721c24;
         }
         
         /* Base Styles */
@@ -176,6 +178,35 @@
         .sidebar-nav a:hover, .sidebar-nav a.active {
             background-color: var(--forest-green);
             color: var(--offwhite);
+        }
+        
+        .discount-notice {
+            background-color: var(--soft-red);
+            color: var(--soft-red-text);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #dc3545;
+        }
+        
+        .discount-notice h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--soft-red-text);
+        }
+        
+        .discount-notice p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        .discount-notice p:last-child {
+            margin-bottom: 0;
+            font-style: italic;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
         
         /* Services Content */
@@ -429,7 +460,14 @@
                 <li><a href="services.html" class="active">Services</a></li>
                 <li><a href="#contact">Get in Touch</a></li>
             </ul>
+        
+            <div class="discount-notice">
+                <h4>Discounts Available Upon Request</h4>
+                <p>I’m always open to working within your budget. That might mean adjusting the project’s
+                    size or depth, but I’ll still make sure it looks great and represents your vision well.</p>
+            </div>
         </aside>
+
 
         <!-- Services Content -->
         <main class="services-content">
