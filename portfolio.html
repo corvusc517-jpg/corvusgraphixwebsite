@@ -21,8 +21,7 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://github.com/corvusc517-jpg/corvusgraphixwebsite/blob/main/a.png?raw=true');
+            background: url('https://github.com/corvusc517-jpg/corvusgraphixwebsite/blob/main/a.png?raw=true');
             background-size: cover;
             background-position: center;
             color: var(--offwhite);
@@ -124,10 +123,18 @@
         
         /* Page Header */
         .page-header {
-            background-color: var(--charcoal);
+            background-color: transparent;
             color: var(--offwhite);
             padding: 4rem 0;
             text-align: center;
+        }
+        
+        .page-header img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
         
         .page-header h1 {
@@ -485,6 +492,7 @@
                 <button class="filter-btn" data-filter="digital">Digital Graphics</button>
             </div>
             
+            <div class="portfolio-grid">
                 <!-- Portfolio Item 2 -->
                 <div class="portfolio-item" data-category="digital">
                     <img src="Three Hounds.png" alt="Isometric Game Graphics">
@@ -576,6 +584,9 @@
                         <h3>Typography experiment</h3>
                         <p>Exemplifying dynamism in logo choice using colours and stylisation</p>
                     </div>
+                    <div class="portfolio-info">
+                        <h3>Typography Exploration</h3>
+                        <p>Experimental typography design showcasing dynamic logo concepts</p>
                         <div class="portfolio-tags">
                             <span class="tag">Print</span>
                             <span class="tag">Branding</span>
