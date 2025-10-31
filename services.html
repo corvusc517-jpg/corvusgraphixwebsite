@@ -414,6 +414,9 @@
             }
         }
     </style>
+    <script 
+      src="https://www.paypal.com/sdk/js?client-id=BAA4FUd5gQ35wW8LORGfMjW3t9YyXHAr41c0yoBnX5V7NmRy66LOSauUR1xFPJF9iU37g3dPY_eVpwxuFs&components=hosted-buttons&disable-funding=venmo&currency=GBP">
+    </script>
 </head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17653942873"></script>
@@ -511,12 +514,12 @@
                             <li>Bleed and trim marks included upon request</li>
                         </ul>
                         <a href="#contact" class="btn">Inquire Now</a>
-                        <a href="https://www.paypal.com/ncp/payment/NDEPQWXL52BM2" target="_blank" rel="noopener noreferrer"
-                           style="background-color:#0070ba; color:white; padding:10px 20px; border-radius:5px; text-decoration:none;">
-                           Pay with PayPal
-                         </a>
-                        </button>
-                        
+                       <div id="paypal-container-YT4XJ9L56B2K8"></div>
+                       <script>
+                          paypal.HostedButtons({
+                            hostedButtonId: "YT4XJ9L56B2K8",
+                          }).render("#paypal-container-YT4XJ9L56B2K8")
+                       </script>
                     </div>
                 </div>
             </div>
